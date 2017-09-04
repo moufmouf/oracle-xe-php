@@ -17,7 +17,7 @@ Your PHP application should be mounted in the `/app` folder.
 For instance, if you want to run the `vendor/bin/phpunit` command in the container, you do:
 
 ```
-docker run -v $(pwd):/app mouf/oracle-xe-php vendor/bin/phpunit
+docker run -v $(pwd):/app moufmouf/oracle-xe-php vendor/bin/phpunit
 ```
 
 Note: the Oracle database will be reset on each run.
@@ -25,5 +25,25 @@ Note: the Oracle database will be reset on each run.
 If you want to run a SQL initialization script before running your command, you can mount SQL files in the `/docker-entrypoint-initdb.d/` directory.
 
 ```
-docker run -v $(pwd):/app --mount type=bind,source=$(pwd)/sql/my-startup-script.sql,destination=/docker-entrypoint-initdb.d/my-startup-script.sql,readonly mouf/oracle-xe-php vendor/bin/phpunit
+docker run -v $(pwd):/app --mount type=bind,source=$(pwd)/sql/my-startup-script.sql,destination=/docker-entrypoint-initdb.d/my-startup-script.sql,readonly moufmouf/oracle-xe-php vendor/bin/phpunit
+```
+
+## Usage in Travis
+
+You can use this image in Travis, using Docker support.
+
+**travis.yml**
+```yml
+sudo: required
+
+language: php
+
+services:
+  - docker
+  
+before_script:
+  - composer install
+  
+script:
+  - docker run -v $(pwd):/app moufmouf/oracle-xe-php vendor/bin/phpunit
 ```
