@@ -5,7 +5,7 @@ This Docker image is tailored at running PHP integration tests against an Oracle
 It contains:
 
 - Oracle XE 11g
-- PHP 7.1 CLI (with OCI8 driver) 
+- PHP 7.4 CLI (with OCI8 driver) 
 
 It is built upon [wnameless/oracle-xe-11g](https://hub.docker.com/r/wnameless/oracle-xe-11g/) for the Oracle installation so you can refer to  [wnameless/oracle-xe-11g documentation](https://hub.docker.com/r/wnameless/oracle-xe-11g/) for any Oracle-related settings.
 
