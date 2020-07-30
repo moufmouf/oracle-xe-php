@@ -17,7 +17,7 @@ Your PHP application should be mounted in the `/app` folder.
 For instance, if you want to run the `vendor/bin/phpunit` command in the container, you do:
 
 ```
-docker run -v $(pwd):/app moufmouf/oracle-xe-php vendor/bin/phpunit
+docker run -v $(pwd):/app moufmouf/oracle-xe-php:7.4-11g vendor/bin/phpunit
 ```
 
 Note: the Oracle database will be reset on each run.

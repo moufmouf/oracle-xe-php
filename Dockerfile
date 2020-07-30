@@ -16,4 +16,7 @@ ADD oci8.ini /etc/php/7.4/cli/conf.d/oci8.ini
 RUN mkdir /app
 
 ADD entrypoint_overloaded.sh /entrypoint_overloaded.sh
+
+ENV LD_LIBRARY_PATH=$ORACLE_HOME/lib
+
 ENTRYPOINT ["/bin/bash", "-c", "/entrypoint_overloaded.sh ${*}", "--"]
